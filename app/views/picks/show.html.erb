@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Pick #<%= @the_pick.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/picks">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_pick/<%= @the_pick.id %>">
+          Delete pick
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_pick.user_id %>
+      </dd>
+
+      <dt>
+        Bowl game
+      </dt>
+      <dd>
+        <%= @the_pick.bowl_game_id %>
+      </dd>
+
+      <dt>
+        Picked team
+      </dt>
+      <dd>
+        <%= @the_pick.picked_team_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_pick.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_pick.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit pick
+    </h2>
+
+    <form action="/modify_pick/<%= @the_pick.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_pick.user_id %>">
+      </div>
+
+      <div>
+        <label for="bowl_game_id_box">
+          Bowl game
+        </label>
+
+        <input type="text" id="bowl_game_id_box" name="query_bowl_game_id" value="<%= @the_pick.bowl_game_id %>">
+      </div>
+
+      <div>
+        <label for="picked_team_id_box">
+          Picked team
+        </label>
+
+        <input type="text" id="picked_team_id_box" name="query_picked_team_id" value="<%= @the_pick.picked_team_id %>">
+      </div>
+
+      <button>
+        Update pick
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

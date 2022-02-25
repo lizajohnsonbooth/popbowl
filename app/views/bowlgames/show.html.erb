@@ -1,0 +1,192 @@
+<div>
+  <div>
+    <h1>
+      Bowlgame #<%= @the_bowlgame.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/bowlgames">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_bowlgame/<%= @the_bowlgame.id %>">
+          Delete bowlgame
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_bowlgame.name %>
+      </dd>
+
+      <dt>
+        Game time
+      </dt>
+      <dd>
+        <%= @the_bowlgame.game_time %>
+      </dd>
+
+      <dt>
+        Network
+      </dt>
+      <dd>
+        <%= @the_bowlgame.network %>
+      </dd>
+
+      <dt>
+        Team one
+      </dt>
+      <dd>
+        <%= @the_bowlgame.team_one_id %>
+      </dd>
+
+      <dt>
+        Team two
+      </dt>
+      <dd>
+        <%= @the_bowlgame.team_two_id %>
+      </dd>
+
+      <dt>
+        Winner
+      </dt>
+      <dd>
+        <%= @the_bowlgame.winner_id %>
+      </dd>
+
+      <dt>
+        Year
+      </dt>
+      <dd>
+        <%= @the_bowlgame.year %>
+      </dd>
+
+      <dt>
+        Championship
+      </dt>
+      <dd>
+        <%= @the_bowlgame.championship %>
+      </dd>
+
+      <dt>
+        Semifinal
+      </dt>
+      <dd>
+        <%= @the_bowlgame.semifinal %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bowlgame.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bowlgame.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit bowlgame
+    </h2>
+
+    <form action="/modify_bowlgame/<%= @the_bowlgame.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_bowlgame.name %>">
+      </div>
+
+      <div>
+        <label for="game_time_box">
+          Game time
+        </label>
+
+        <input type="datetime-local" id="game_time_box" name="query_game_time"
+         value="<%= @the_bowlgame.game_time %>">
+      </div>
+
+      <div>
+        <label for="network_box">
+          Network
+        </label>
+
+        <input type="text" id="network_box" name="query_network" value="<%= @the_bowlgame.network %>">
+      </div>
+
+      <div>
+        <label for="team_one_id_box">
+          Team one
+        </label>
+
+        <input type="text" id="team_one_id_box" name="query_team_one_id" value="<%= @the_bowlgame.team_one_id %>">
+      </div>
+
+      <div>
+        <label for="team_two_id_box">
+          Team two
+        </label>
+
+        <input type="text" id="team_two_id_box" name="query_team_two_id" value="<%= @the_bowlgame.team_two_id %>">
+      </div>
+
+      <div>
+        <label for="winner_id_box">
+          Winner
+        </label>
+
+        <input type="text" id="winner_id_box" name="query_winner_id" value="<%= @the_bowlgame.winner_id %>">
+      </div>
+
+      <div>
+        <label for="year_box">
+          Year
+        </label>
+
+        <input type="text" id="year_box" name="query_year" value="<%= @the_bowlgame.year %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="championship_box" name="query_championship" value="1" <%= "checked" if @the_bowlgame.championship %>>
+
+        <label for="championship_box">
+            Championship
+        </label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="semifinal_box" name="query_semifinal" value="1" <%= "checked" if @the_bowlgame.semifinal %>>
+
+        <label for="semifinal_box">
+            Semifinal
+        </label>
+      </div>
+
+      <button>
+        Update bowlgame
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
