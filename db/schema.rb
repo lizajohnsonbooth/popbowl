@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2022_02_25_203937) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
+    t.string "abbreviation"
+    t.string "mascot"
+    t.string "espn_team_page"
+    t.string "logo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

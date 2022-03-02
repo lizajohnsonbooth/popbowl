@@ -2,10 +2,14 @@
 #
 # Table name: teams
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :integer          not null, primary key
+#  abbreviation   :string
+#  espn_team_page :string
+#  logo           :string
+#  mascot         :string
+#  name           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 class Team < ApplicationRecord
   has_many(:home_bowl_games, { :class_name => "Bowlgame", :foreign_key => "team_one_id", :dependent => :destroy })
