@@ -317,7 +317,7 @@ task({ :sample_data => :environment }) do
   game.championship = FALSE
   game.game_time = DateTime.parse("30-12-2021 22:30:00")
   game.name = "Las Vegas Bowl"
-  game.network = "ESPM"
+  game.network = "ESPN"
   game.semifinal = FALSE
   game.year = 2022
   game.team_one_id = Team.where(:name => "Wisconsin").at(0).id

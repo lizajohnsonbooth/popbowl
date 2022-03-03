@@ -20,7 +20,7 @@
           Name
         </label>
 
-        <input type="text" id="name_box" name="query_name">
+        <input placeholder = "The Pop Bowl" type="text" id="name_box" name="query_name">
       </div>
 
       <div>
@@ -31,12 +31,19 @@
         <input type="datetime-local" id="game_time_box" name="query_game_time">
       </div>
 
+
       <div>
         <label for="network_box">
           Network
         </label>
 
-        <input type="text" id="network_box" name="query_network">
+        <select name="query_network" id="network_box">
+          <% Bowlgame.order(:network).each do |a_network| %>
+          <option value="<%= a_network.id %>">
+            <%= a_network.network %>
+          </option>
+          <% end %>
+        </select>
       </div>
 
       <div>
@@ -44,23 +51,28 @@
           Team one
         </label>
 
-        <input type="text" id="team_one_id_box" name="query_team_one_id">
+        <select name="query_team_one_id" id="team_one_id_box"> <--! dkjda -->
+          <% Bowlgame.order(:team_one_id).each do |a_team| %>
+          <option value="<%= a_team.id %>">
+            <%= a_team.team_one_id %>
+          </option>
+          <% end %>
+        </select>
       </div>
 
       <div>
         <label for="team_two_id_box">
           Team two
         </label>
-
-        <input type="text" id="team_two_id_box" name="query_team_two_id">
-      </div>
-
-      <div>
-        <label for="winner_id_box">
-          Winner
-        </label>
-
-        <input type="text" id="winner_id_box" name="query_winner_id">
+        <select name="query_team_two_id" id="team_two_id_box">
+          <% Bowlgame.order(:team_two_id).each do |a_team| %>
+          <option value="<%= a_team.id %>">
+            <%= a_team.team_two_id %>
+          </option>
+          <% end %>
+        </select>
+      
+      
       </div>
 
       <div>
@@ -68,7 +80,7 @@
           Year
         </label>
 
-        <input type="text" id="year_box" name="query_year">
+        <input placeholder = "2022" type="text" id="year_box" name="query_year">
       </div>
 
       <div>
