@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all teams
+      College Football Teams
     </h1>
   </div>
 </div>
@@ -33,10 +33,14 @@
 <hr>
 <div>
   <div>
-    <table>
+    <table border="1">
       <tr>
         <th>
           ID
+        </th>
+
+        <th>
+        Logo
         </th>
 
         <th>
@@ -44,21 +48,27 @@
         </th>
 
         <th>
-          Created at
+          Abbreviation
         </th>
 
         <th>
-          Updated at
+        Mascot
         </th>
 
         <th>
+          ESPN Team Page
         </th>
+
       </tr>
 
-      <% @list_of_teams.each do |a_team| %>
+      <% @list_of_teams.order(:asc).each do |a_team| %>
       <tr>
         <td>
           <%= a_team.id %>
+        </td>
+
+        <td>
+        <img src="<%= a_team.logo %>">
         </td>
 
         <td>
@@ -66,17 +76,23 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(a_team.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_team.updated_at) %> ago
+          <%= a_team.abbreviation %> 
         </td>
 
         <td>
-          <a href="/teams/<%= a_team.id %>">
-            Show details
+          <%= a_team.mascot %> 
+        </td>
+
+        <td>
+          <a href="<%= a_team.espn_team_page %>"> ESPN 
           </a>
         </td>
+
+        </td>
+
+
+
+
       </tr>
       <% end %>
     </table>
