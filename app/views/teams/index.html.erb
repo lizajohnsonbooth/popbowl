@@ -61,7 +61,7 @@
 
       </tr>
 
-      <% @list_of_teams.order(:asc).each do |a_team| %>
+      <% @list_of_teams.order(:name).reverse.each do |a_team| %>
       <tr>
         <td>
           <%= a_team.id %>

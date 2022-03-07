@@ -94,7 +94,7 @@
         </th>
       </tr>
 
-      <% @list_of_picks.each do |a_pick| %>
+      <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
       <tr>
         <td>
           <%= a_pick.id %>
@@ -105,11 +105,14 @@
         </td>
 
         <td>
-          <%= a_pick.bowl_game_id %>
+          <% bowl_game = a_pick.bowl_game_id %>
+          <%= Bowlgame.where({ :id => bowl_game}).at(0).name %>
         </td>
 
         <td>
-          <%= a_pick.picked_team_id %>
+          <% team = a_pick.picked_team_id %>
+          <%= Team.where({ :id => team}).at(0).name %>
+
         </td>
 
         <td>

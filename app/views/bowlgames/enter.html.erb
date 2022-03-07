@@ -154,7 +154,7 @@
         </th>
       </tr>
 
-      <% @list_of_bowlgames.order( :game_time => :asc ).each do |a_bowlgame| %>
+      <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
       <tr>
         <td>
           <%= a_bowlgame.id %>
