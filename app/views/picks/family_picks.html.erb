@@ -43,6 +43,9 @@
           
             <% end %>
 
+        <% %>
+
+
         <td>
          <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
           <%= time_ago_in_words(a_pick.created_at) %> ago
