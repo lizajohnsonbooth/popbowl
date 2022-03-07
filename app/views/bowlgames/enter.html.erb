@@ -131,10 +131,6 @@
         </th>
 
         <th>
-          Winner
-        </th>
-
-        <th>
           Year
         </th>
 
@@ -158,7 +154,7 @@
         </th>
       </tr>
 
-      <% @list_of_bowlgames.each do |a_bowlgame| %>
+      <% @list_of_bowlgames.order( :game_time => :asc ).each do |a_bowlgame| %>
       <tr>
         <td>
           <%= a_bowlgame.id %>
@@ -177,16 +173,13 @@
         </td>
 
         <td>
-          <%= a_bowlgame.team_one_id %>
-        -->
+          <% team_one = a_bowlgame.team_one_id %>
+          <%= Team.where({ :id => team_one}).at(0).name %>
         </td>
 
         <td>
-          <%= a_bowlgame.team_two_id %>
-        </td>
-
-        <td>
-          <%= a_bowlgame.winner_id %>
+          <% team_two = a_bowlgame.team_two_id %>
+          <%= Team.where({ :id => team_two}).at(0).name %>
         </td>
 
         <td>
