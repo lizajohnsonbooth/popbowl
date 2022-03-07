@@ -21,7 +21,11 @@
            <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
            <th> <%= a_bowlgame.name %> </th>
            <% end %>
-     
+       
+       <th>
+          Score
+        </th>
+       
         <th>
           Created at
         </th>
@@ -30,34 +34,35 @@
           Updated at
         </th>
 
-        <th>
-        </th>
+      
       </tr>
             
      
          <% @users = User.all.each do |a_user| %> 
-           <tr> <td> <%= a_user.name %> </td>  </tr>
-           <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
-            <% team = a_pick.picked_team_id %>
-          <td> <% Team.where({ :id => team}).at(0).name %> </td>
+            <% win_count = 0 %>
+           <tr> 
+           <td> <%= a_user.name %> </td>  
+             <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
+           <td> 
+            <% user_pick = Pick.where({ :user_id => a_user.id, :bowl_game_id => a_bowlgame.id}) %>
+            
+                <% if user_pick.present? %>
+                
+                      <% if Pick.where({ :bowl_game_id => a_bowlgame.id, :user_id => a_user.id, :picked_team_id => a_bowlgame.winner_id }).present?  %>
+                          <% win_count = win_count + 1 %>
+                        <% end %>
+                            
+                <%= user_pick.at(0).picked_team.name %> 
+                <% else %> 
+                  --
+                <% end %> 
+             </td>   
+            <% end %> 
+            <td> 
+              <%= win_count %>
+            </td>
+             </tr>
           
-            <% end %>
-
-        <% %>
-
-
-        <td>
-         <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
-          <%= time_ago_in_words(a_pick.created_at) %> ago
-          <% end %>
-        </td>
-        <td>
-          <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
-          <%= time_ago_in_words(a_pick.updated_at) %> ago
-          <% end %>
-        </td>
-      </tr>
-      
       <% end %>
     </table>
   </div>

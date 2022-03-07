@@ -43,13 +43,10 @@
 
         <td>
         <select name="query_picked_team_id" id="picked_team_id_box">
-          <% team_one = a_bowlgame.team_one_id %>
-          <% team_two = a_bowlgame.team_two_id %>
-          <%= Team.where({ :id => team_one}).or(Team.where({ :id => team_two})) %>
-           <option value="<%= a_bowlgame.id %>"> <%= Team.where({ :id => team_one}).at(0).name %>
-           <option value="<%= a_bowlgame.id %>"> <%= Team.where({ :id => team_two}).at(0).name %>
+           <option value="<%= a_bowlgame.team_one_id %>"> <%= a_bowlgame.team_one.name %>      </option>      
+           <option value="<%= a_bowlgame.team_two_id %>"> <%= a_bowlgame.team_two.name %>     </option>      
        </select>
-          </option>      
+     
         </td>
 
        <td>

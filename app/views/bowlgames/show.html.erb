@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Bowlgame #<%= @the_bowlgame.id %> details
+      Bowlgame <%= @the_bowlgame.name %> details
     </h1>
 
     <div>
@@ -44,21 +44,21 @@
         Team one
       </dt>
       <dd>
-        <%= @the_bowlgame.team_one_id %>
+        <%= @the_bowlgame.team_one.name %>
       </dd>
 
       <dt>
         Team two
       </dt>
       <dd>
-        <%= @the_bowlgame.team_two_id %>
+        <%= @the_bowlgame.team_two.name %>
       </dd>
 
       <dt>
         Winner
       </dt>
       <dd>
-        <%= @the_bowlgame.winner_id %>
+        <%= @the_bowlgame.winner.name %>
       </dd>
 
       <dt>
