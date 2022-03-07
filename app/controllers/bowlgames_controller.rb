@@ -4,7 +4,7 @@ class BowlgamesController < ApplicationController
 
     @list_of_bowlgames = matching_bowlgames.order({ :created_at => :desc })
 
-    render({ :template => "bowlgames/enter.html.erb" })
+    render({ :template => "bowlgames/index.html.erb" })
   end
 
   def show

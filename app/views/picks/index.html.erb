@@ -58,6 +58,72 @@
         Create pick
       </button>
     </form>
+
+
+
+    <div>
+    <h1>
+      Make Your Picks (show drop down of only relevant teams and submit at once?)
+    </h1>
+  </div>
+
+    <form action="/insert_pick" method="post">
+      <div>
+        <label for="user_id_box">
+        </label>
+
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= session.fetch(:user_id)%>">
+      </div>
+
+ <div>
+    <table border = 1>
+      <tr>
+        <th>
+          Name
+        </th>
+
+        <th>
+          Pick
+        </th>
+     </tr>
+
+      <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
+      <tr>
+        <td>
+          <%= a_bowlgame.name %>
+        </td>
+
+        <td>
+        <select name="query_picked_team_id" id="picked_team_id_box">
+          <% Team.order(:name).each do |a_team | %>
+          <option value="<%= a_team.id %>">
+            <%= a_team.name %>
+          </option>
+          <% end %>
+        </select>
+
+          <% team_one = a_bowlgame.team_one_id %>
+          <%= Team.where({ :id => team_one}).at(0).name %>
+          <% team_two = a_bowlgame.team_two_id %>
+          <%= Team.where({ :id => team_two}).at(0).name %>
+        </td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+      </div>
+
+     
+
+      <button>
+        Submit picks
+      </button>
+    </form>
+<h1> end of test </h1>
+
+
+
   </div>
 </div>
 

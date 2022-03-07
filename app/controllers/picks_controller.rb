@@ -4,6 +4,10 @@ class PicksController < ApplicationController
 
     @list_of_picks = matching_picks.order({ :created_at => :desc })
 
+    matching_bowlgames = Bowlgame.all
+
+    @list_of_bowlgames = matching_bowlgames.order({ :game_time => :desc })
+
     render({ :template => "picks/index.html.erb" })
   end
 
