@@ -33,14 +33,13 @@
         <th>
         </th>
       </tr>
-        
-     
+            
      
          <% @users = User.all.each do |a_user| %> 
            <tr> <td> <%= a_user.name %> </td>  </tr>
            <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
             <% team = a_pick.picked_team_id %>
-          <td> <%= Team.where({ :id => team}).at(0).name %> </td>
+          <td> <% Team.where({ :id => team}).at(0).name %> </td>
           
             <% end %>
 

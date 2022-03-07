@@ -13,7 +13,7 @@
     <h2>
       Add a new bowlgame
     </h2>
-
+  
     <form action="/insert_bowlgame" method="post">
       <div>
         <label for="name_box">
@@ -37,12 +37,11 @@
         </label>
 
         <select name="query_network" id="network_box">
-          <% b = Bowlgame.order(:network).uniq %>
-          <%b.each do |a_network| %>
-          <option value="<%= a_network.id %>">
-            <%= a_network.network %>
-          </option>
-          <% end %>
+          <option value= "ESPN"> ESPN </option>
+          <option value= "ESPN2"> ESPN2 </option>
+          <option value= "CBS"> CBS </option>
+          <option value= "ABC"> ABC </option>
+          
         </select>
       </div>
 
