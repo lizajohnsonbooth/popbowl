@@ -27,12 +27,12 @@ class BowlgamesController < ApplicationController
     the_bowlgame.year = params.fetch("query_year")
     the_bowlgame.championship = params.fetch("query_championship", false)
     the_bowlgame.semifinal = params.fetch("query_semifinal", false)
-
+   
     if the_bowlgame.valid?
       the_bowlgame.save
-      redirect_to("/bowlgames", { :notice => "Bowlgame created successfully." })
+      redirect_to("/bowlgames", { :notice => the_bowlgame.errors.full_messages.to_sentence })
     else
-      redirect_to("/bowlgames", { :notice => "Bowlgame failed to create successfully." })
+      redirect_to("/bowlgames", { :notice => the_bowlgame.errors.full_messages.to_sentence })
     end
   end
 

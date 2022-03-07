@@ -12,7 +12,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-
+  
+ 
   </head>
 
   <body>
@@ -50,6 +51,15 @@
     <li> 
       <a href="/teams">View the College Football Teams</a>
    </li>
-    <%= yield %>  
+  
+  <div style="color: green">
+      <%= notice %>
+   </div>
+
+  <div style="color: red">
+    <%= alert %>
+  </div>
+  
+       <%= yield %>  
   </body>
 </html>
