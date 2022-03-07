@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   get("/picks/:path_id", { :controller => "picks", :action => "show" })
 
+  get("/family_picks", { :controller => "picks", :action => "show_all" })
+
+
   # UPDATE
 
   post("/modify_pick/:path_id", { :controller => "picks", :action => "update" })

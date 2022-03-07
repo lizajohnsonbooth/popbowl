@@ -35,11 +35,7 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
+       <th>
         Logo
         </th>
 
@@ -63,10 +59,6 @@
 
       <% @list_of_teams.order(:name).reverse.each do |a_team| %>
       <tr>
-        <td>
-          <%= a_team.id %>
-        </td>
-
         <td>
         <img src="<%= a_team.logo %>">
         </td>

@@ -83,7 +83,8 @@
         </th>
 
         <th>
-          Pick
+          <% user_id = session.fetch(:user_id) %>
+          <%= User.where ({ :id => user_id }) %> 's Picks
         </th>
      </tr>
 
@@ -95,17 +96,16 @@
 
         <td>
         <select name="query_picked_team_id" id="picked_team_id_box">
-          <% Team.order(:name).each do |a_team | %>
-          <option value="<%= a_team.id %>">
-            <%= a_team.name %>
-          </option>
-          <% end %>
-        </select>
-
           <% team_one = a_bowlgame.team_one_id %>
-          <%= Team.where({ :id => team_one}).at(0).name %>
           <% team_two = a_bowlgame.team_two_id %>
+          <%= Team.where({ :id => team_one}).or(Team.where({ :id => team_two})) %>
+           <option value="<%= a_bowlgame.id %>">
+          <%= Team.where({ :id => team_one}).at(0).name %>
           <%= Team.where({ :id => team_two}).at(0).name %>
+       </select>
+          </option>
+       
+        
         </td>
 
       </tr>

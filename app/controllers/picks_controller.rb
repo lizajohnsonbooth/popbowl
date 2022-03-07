@@ -59,4 +59,19 @@ class PicksController < ApplicationController
 
     redirect_to("/picks", { :notice => "Pick deleted successfully."} )
   end
+
+
+  def show_all
+    matching_picks = Pick.all
+
+    @list_of_picks = matching_picks.order({ :created_at => :desc })
+
+    matching_bowlgames = Bowlgame.all
+
+    @list_of_bowlgames = matching_bowlgames.order({ :game_time => :desc })
+
+    render({ :template => "picks/family_picks.html.erb" })
+  end
+
+
 end
