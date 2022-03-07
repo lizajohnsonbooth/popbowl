@@ -31,7 +31,6 @@
         <input type="datetime-local" id="game_time_box" name="query_game_time">
       </div>
 
-
       <div>
         <label for="network_box">
           Network
@@ -51,10 +50,10 @@
           Team one
         </label>
 
-        <select name="query_team_one_id" id="team_one_id_box"> <--! dkjda -->
-          <% Bowlgame.order(:team_one_id).each do |a_team| %>
+        <select name="query_team_one_id" id="team_one_id_box">
+          <% Team.order(:name).each do |a_team| %>
           <option value="<%= a_team.id %>">
-            <%= a_team.team_one_id %>
+            <%= a_team.name %>
           </option>
           <% end %>
         </select>
@@ -65,9 +64,9 @@
           Team two
         </label>
         <select name="query_team_two_id" id="team_two_id_box">
-          <% Bowlgame.order(:team_two_id).each do |a_team| %>
+          <% Team.order(:name).each do |a_team| %>
           <option value="<%= a_team.id %>">
-            <%= a_team.team_two_id %>
+            <%= a_team.name %>
           </option>
           <% end %>
         </select>
@@ -105,7 +104,7 @@
 <hr>
 <div>
   <div>
-    <table>
+    <table border = 1>
       <tr>
         <th>
           ID
@@ -179,6 +178,7 @@
 
         <td>
           <%= a_bowlgame.team_one_id %>
+        -->
         </td>
 
         <td>

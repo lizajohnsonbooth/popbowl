@@ -24,7 +24,7 @@ class BowlgamesController < ApplicationController
     the_bowlgame.network = params.fetch("query_network")
     the_bowlgame.team_one_id = params.fetch("query_team_one_id")
     the_bowlgame.team_two_id = params.fetch("query_team_two_id")
-    the_bowlgame.winner_id = params.fetch("query_winner_id")
+    #the_bowlgame.winner_id = params.fetch("query_winner_id")
     the_bowlgame.year = params.fetch("query_year")
     the_bowlgame.championship = params.fetch("query_championship", false)
     the_bowlgame.semifinal = params.fetch("query_semifinal", false)
