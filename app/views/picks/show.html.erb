@@ -1,7 +1,9 @@
 <div>
   <div>
     <h1>
-      Pick #<%= @the_pick.id %> details
+        <% user_id = session.fetch(:user_id) %>
+        <% user = User.where ({ :id => user_id }) %> 
+        <%= user.at(0).name %>'s <%= @the_pick.bowl_game.name %> Pick
     </h1>
 
     <div>
@@ -23,21 +25,21 @@
         User
       </dt>
       <dd>
-        <%= @the_pick.user_id %>
+        <%= @the_pick.user.name %>
       </dd>
 
       <dt>
         Bowl game
       </dt>
       <dd>
-        <%= @the_pick.bowl_game_id %>
+        <%= @the_pick.bowl_game.name %>
       </dd>
 
       <dt>
         Picked team
       </dt>
       <dd>
-        <%= @the_pick.picked_team_id %>
+        <%= @the_pick.picked_team.name %>
       </dd>
 
       <dt>
@@ -68,11 +70,8 @@
 
     <form action="/modify_pick/<%= @the_pick.id %>"  method="post" >
       <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_pick.user_id %>">
+     
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_pick.user.name %>">
       </div>
 
       <div>
@@ -80,7 +79,7 @@
           Bowl game
         </label>
 
-        <input type="text" id="bowl_game_id_box" name="query_bowl_game_id" value="<%= @the_pick.bowl_game_id %>">
+        <input type="text" id="bowl_game_id_box" name="query_bowl_game_id" value="<%= @the_pick.bowl_game.name %>">
       </div>
 
       <div>
@@ -88,7 +87,7 @@
           Picked team
         </label>
 
-        <input type="text" id="picked_team_id_box" name="query_picked_team_id" value="<%= @the_pick.picked_team_id %>">
+        <input type="text" id="picked_team_id_box" name="query_picked_team_id" value="<%= @the_pick.picked_team.name %>">
       </div>
 
       <button>
