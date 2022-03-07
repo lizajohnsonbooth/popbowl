@@ -32,7 +32,7 @@ class BowlgamesController < ApplicationController
       the_bowlgame.save
       redirect_to("/bowlgames", { :notice => the_bowlgame.errors.full_messages.to_sentence })
     else
-      redirect_to("/bowlgames", { :notice => the_bowlgame.errors.full_messages.to_sentence })
+      redirect_to("/bowlgames", { :alert => the_bowlgame.errors.full_messages.to_sentence })
     end
   end
 

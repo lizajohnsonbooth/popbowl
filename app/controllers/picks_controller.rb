@@ -29,9 +29,9 @@ class PicksController < ApplicationController
 
     if the_pick.valid?
       the_pick.save
-      redirect_to("/picks", { :notice => "Pick created successfully." })
+      redirect_to("/picks", { :notice => the_pick.errors.full_messages.to_sentence })
     else
-      redirect_to("/picks", { :notice => "Pick failed to create successfully." })
+      redirect_to("/picks", { :alert => the_pick.errors.full_messages.to_sentence })
     end
   end
 

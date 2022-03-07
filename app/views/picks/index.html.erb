@@ -1,69 +1,6 @@
 <div>
-  <div>
     <h1>
-      List of all picks
-    </h1>
-  </div>
-</div>
-
-<hr>
-
-<div>
-  <div>
-    <h2>
-      Make your picks
-    </h2>
-
-    <form action="/insert_pick" method="post">
-      <div>
-        <label for="user_id_box">
-        </label>
-
-        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= session.fetch(:user_id)%>">
-      </div>
-
-      <div>
-        <label for="bowl_game_id_box">
-          Bowl game
-        </label>
-    
-        <select name="query_bowl_game_id" id="bowl_game_id_box">
-          <% Bowlgame.order(:name).each do |a_game| %>
-          <option value="<%= a_game.id %>">
-            <%= a_game.name %>
-          </option>
-          <% end %>
-        </select>
-
-      </div>
-
-      <div>
-        <label for="picked_team_id_box">
-          Picked team
-        </label>
-
-       <select name="query_picked_team_id" id="picked_team_id_box">
-          <% Team.order(:name).each do |a_team | %>
-          <option value="<%= a_team.id %>">
-            <%= a_team.name %>
-          </option>
-          <% end %>
-        </select>
-
-      </div>
-
-     
-
-      <button>
-        Create pick
-      </button>
-    </form>
-
-
-
-    <div>
-    <h1>
-      Make Your Picks (show drop down of only relevant teams and submit at once?)
+      Make Your Picks
     </h1>
   </div>
 
@@ -84,14 +21,15 @@
 
         <th>
           <% user_id = session.fetch(:user_id) %>
-          <%= User.where ({ :id => user_id }) %> 's Picks
+          <% user = User.where ({ :id => user_id }) %> 
+          <%= user.at(0).name %>'s Picks
         </th>
      </tr>
 
       <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
       <tr>
         <td>
-          <%= a_bowlgame.name %>
+          <%= query_bowl_game_id = a_bowlgame.name %>
         </td>
 
         <td>
@@ -99,31 +37,21 @@
           <% team_one = a_bowlgame.team_one_id %>
           <% team_two = a_bowlgame.team_two_id %>
           <%= Team.where({ :id => team_one}).or(Team.where({ :id => team_two})) %>
-           <option value="<%= a_bowlgame.id %>">
-          <%= Team.where({ :id => team_one}).at(0).name %>
-          <%= Team.where({ :id => team_two}).at(0).name %>
+           <option value="<%= a_bowlgame.id %>"> <%= Team.where({ :id => team_one}).at(0).name %>
+          <option value="<%= a_bowlgame.id %>"> <%= Team.where({ :id => team_two}).at(0).name %>
        </select>
-          </option>
-       
-        
+          </option>      
         </td>
-
       </tr>
       <% end %>
     </table>
   </div>
       </div>
 
-     
-
       <button>
         Submit picks
       </button>
     </form>
-<h1> end of test </h1>
-
-
-
   </div>
 </div>
 

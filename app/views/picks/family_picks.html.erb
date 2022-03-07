@@ -17,13 +17,11 @@
         <th>
           User
         </th>
-
-        <th>
+ 
            <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
-           <%= a_bowlgame.name %>
+           <th> <%= a_bowlgame.name %> </th>
            <% end %>
-        </th>
-
+     
         <th>
           Created at
         </th>
@@ -36,27 +34,28 @@
         </th>
       </tr>
         
-      <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
-      <tr>
-       
-        <td>
-          <% user = a_pick.user_id %>
-          <%= User.where({ :id => user}).at(0).name %>
-        </td>
-
-         <td>
-          <% team = a_pick.picked_team_id %>
-          <%= Team.where({ :id => team}).at(0).name %>
-
-        </td>
+     
+     
+         <% @users = User.all.each do |a_user| %> 
+           <tr> <td> <%= a_user.name %> </td>  </tr>
+           <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
+            <% team = a_pick.picked_team_id %>
+          <td> <%= Team.where({ :id => team}).at(0).name %> </td>
+          
+            <% end %>
 
         <td>
+         <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
           <%= time_ago_in_words(a_pick.created_at) %> ago
+          <% end %>
         </td>
         <td>
+          <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
           <%= time_ago_in_words(a_pick.updated_at) %> ago
+          <% end %>
         </td>
       </tr>
+      
       <% end %>
     </table>
   </div>

@@ -37,7 +37,8 @@
         </label>
 
         <select name="query_network" id="network_box">
-          <% Bowlgame.order(:network).each do |a_network| %>
+          <% b = Bowlgame.order(:network).uniq %>
+          <%b.each do |a_network| %>
           <option value="<%= a_network.id %>">
             <%= a_network.network %>
           </option>
