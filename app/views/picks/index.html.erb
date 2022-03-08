@@ -67,10 +67,6 @@
     <table>
       <tr>
         <th>
-          ID
-        </th>
-
-        <th>
           User
         </th>
 
@@ -97,11 +93,7 @@
       <% @list_of_picks.each do |a_pick| %>
       <tr>
         <td>
-          <%= a_pick.id %>
-        </td>
-
-        <td>
-          <%= a_pick.user_id %>
+          <%= a_pick.user.name %>
         </td>
 
         <td>

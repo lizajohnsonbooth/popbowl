@@ -71,14 +71,14 @@
     <form action="/modify_pick/<%= @the_pick.id %>"  method="post" >
       <div>
      
-        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_pick.user.name %>">
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_pick.user.id %>">
       </div>
 
       <div>
         <label for="bowl_game_id_box">
             </label>
 
-        <input type="hidden" id="bowl_game_id_box" name="query_bowl_game_id" value="<%= @the_pick.bowl_game.name %>">
+        <input type="hidden" id="bowl_game_id_box" name="query_bowl_game_id" value="<%= @the_pick.bowl_game.id %>">
       </div>
 
       <div>

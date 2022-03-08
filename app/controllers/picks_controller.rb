@@ -51,7 +51,7 @@ class PicksController < ApplicationController
       the_pick.save
       redirect_to("/picks/#{the_pick.id}", { :notice => "Pick updated successfully."} )
     else
-      redirect_to("/picks/#{the_pick.id}", { :alert => "Pick failed to update successfully." })
+      redirect_to("/picks/#{the_pick.id}", { :alert => the_pick.errors.full_messages})
     end
   end
 

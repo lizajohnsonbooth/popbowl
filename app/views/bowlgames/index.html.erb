@@ -106,10 +106,6 @@
     <table border = 1>
       <tr>
         <th>
-          ID
-        </th>
-
-        <th>
           Name
         </th>
 
@@ -155,11 +151,7 @@
 
       <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
       <tr>
-        <td>
-          <%= a_bowlgame.id %>
-        </td>
-
-        <td>
+         <td>
           <%= a_bowlgame.name %>
         </td>
 
