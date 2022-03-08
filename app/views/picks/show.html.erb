@@ -76,10 +76,9 @@
 
       <div>
         <label for="bowl_game_id_box">
-          Bowl game
-        </label>
+            </label>
 
-        <input type="text" id="bowl_game_id_box" name="query_bowl_game_id" value="<%= @the_pick.bowl_game.name %>">
+        <input type="hidden" id="bowl_game_id_box" name="query_bowl_game_id" value="<%= @the_pick.bowl_game.name %>">
       </div>
 
       <div>
@@ -87,7 +86,10 @@
           Picked team
         </label>
 
-        <input type="text" id="picked_team_id_box" name="query_picked_team_id" value="<%= @the_pick.picked_team.name %>">
+      <select name="query_picked_team_id" id="picked_team_id_box">
+           <option value="<%= @the_pick.bowl_game.team_one.id %>"> <%= @the_pick.bowl_game.team_one.name %> </option>      
+           <option value="<%= @the_pick.bowl_game.team_two.id %>"> <%= @the_pick.bowl_game.team_two.name %> </option>  
+      </select>
       </div>
 
       <button>

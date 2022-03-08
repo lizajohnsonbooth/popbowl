@@ -43,6 +43,10 @@ class PicksController < ApplicationController
     the_pick.bowl_game_id = params.fetch("query_bowl_game_id")
     the_pick.picked_team_id = params.fetch("query_picked_team_id")
 
+    matching_bowlgames = Bowlgame.all
+    
+    @list_of_bowlgames = matching_bowlgames.order({ :game_time => :desc })
+
     if the_pick.valid?
       the_pick.save
       redirect_to("/picks/#{the_pick.id}", { :notice => "Pick updated successfully."} )

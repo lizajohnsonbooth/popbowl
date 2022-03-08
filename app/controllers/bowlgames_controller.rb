@@ -37,6 +37,7 @@ class BowlgamesController < ApplicationController
   end
 
   def update
+    
     the_id = params.fetch("path_id")
     the_bowlgame = Bowlgame.where({ :id => the_id }).at(0)
     the_bowlgame.name = params.fetch("query_name")
