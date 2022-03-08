@@ -25,29 +25,31 @@
        <th>
           Score
         </th>
-       
-        <th>
-          Created at
-        </th>
 
-        <th>
-          Updated at
-        </th>
-
-      
       </tr>
-            
-     
-         <% @users = User.all.each do |a_user| %> 
+
+        <tr> 
+        <td> Winner </td> 
+         <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
+          <td>  <% if a_bowlgame.winner.present? %> 
+                <%= a_bowlgame.winner.name %>
+                <% else %> No Winner
+                <% end %>
+           </td>
+              <% end %>
+              <td> </td>
+          </tr>
+
+          <% @users = User.all.each do |a_user| %> 
             <% win_count = 0 %>
            <tr> 
-           <td> <%= a_user.name %> </td>  
-             <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
-           <td> 
-            <% user_pick = Pick.where({ :user_id => a_user.id, :bowl_game_id => a_bowlgame.id}) %>
-            
-                <% if user_pick.present? %>
-                
+             <td> <%= a_user.name %> </td>  
+              <% @list_of_bowlgames.order( :game_time).reverse.each do |a_bowlgame| %>
+              <% a_bowlgame.winner_id %>
+
+           <td> <% user_pick = Pick.where({ :user_id => a_user.id, :bowl_game_id => a_bowlgame.id}) %>
+              <% if user_pick.present? %>
+             
                       <% if Pick.where({ :bowl_game_id => a_bowlgame.id, :user_id => a_user.id, :picked_team_id => a_bowlgame.winner_id }).present?  %>
                           <% win_count = win_count + 1 %>
                         <% end %>
@@ -57,12 +59,20 @@
                   --
                 <% end %> 
              </td>   
+          
+
             <% end %> 
-            <td> 
+              <td> 
               <%= win_count %>
             </td>
+
+         
+              
+
+
              </tr>
-          
+
+
       <% end %>
     </table>
   </div>
