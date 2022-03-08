@@ -58,7 +58,11 @@
         Winner
       </dt>
       <dd>
-        <%= @the_bowlgame.winner.name %>
+       <% if @the_bowlgame.winner.present? %> 
+          <%= @the_bowlgame.winner %>
+          <% else %> No Winner
+             <% end %>
+        
       </dd>
 
       <dt>
@@ -154,8 +158,12 @@
         <label for="winner_id_box">
           Winner
         </label>
-
+         <% if @the_bowlgame.winner.present? %> 
         <input type="text" id="winner_id_box" name="query_winner_id" value="<%= @the_bowlgame.winner.name %>">
+          <% else %> <input type="text" id="winner_id_box" name="query_winner_id" value="No Winner">
+
+             <% end %>
+
       </div>
 
       <div>
