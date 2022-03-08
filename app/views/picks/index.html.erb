@@ -94,7 +94,7 @@
         </th>
       </tr>
 
-      <% @list_of_picks.order( :game_time).reverse.each do |a_pick| %>
+      <% @list_of_picks.each do |a_pick| %>
       <tr>
         <td>
           <%= a_pick.id %>
